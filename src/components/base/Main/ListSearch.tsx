@@ -1,6 +1,6 @@
 import { Box, TextField } from "@mui/material";
 import { ChangeEventHandler } from "react";
-import SearchIcon from "./../Icons/Search";
+import SearchIcon from "../../Icons/Search";
 
 interface Props {
   onChangeQuery:
@@ -8,7 +8,7 @@ interface Props {
     | undefined;
 }
 
-const BaseInsuranceListSearchAndFilter = ({ onChangeQuery }: Props) => {
+const BaseMainListSearch = ({ onChangeQuery }: Props) => {
   return (
     <Box
       sx={{
@@ -16,10 +16,11 @@ const BaseInsuranceListSearchAndFilter = ({ onChangeQuery }: Props) => {
         gap: "8px",
         alignItems: "center",
         marginTop: "24px",
+        width: "100%",
       }}
     >
       <TextField
-        sx={{ width: "100%" }}
+        fullWidth
         placeholder={"Поиск"}
         onChange={onChangeQuery}
         className="filter"
@@ -31,4 +32,4 @@ const BaseInsuranceListSearchAndFilter = ({ onChangeQuery }: Props) => {
   );
 };
 
-export default BaseInsuranceListSearchAndFilter;
+export default BaseMainListSearch;

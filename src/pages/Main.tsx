@@ -1,27 +1,17 @@
-import { Box, Stack, TextField, Typography } from "@mui/material";
-import { SetStateAction, useEffect, useState } from "react";
+import { Box, Stack, Typography } from "@mui/material";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { getCountries } from "../api/services";
-import BaseCountryList from "../components/base/CountryItemList";
-import SearchIcon from "../components/Icons/Search";
+import BaseMainCountryItemList from "../components/base/Main/CountryItemList";
+import BaseMainListSearch from "../components/base/Main/ListSearch";
 import { getFilteredArrayOfOjects } from "../utils/filter";
 
 interface Countries {
   countries: Record<string, Object>[] | undefined;
+  setCountryName: Dispatch<SetStateAction<string>>;
 }
 
-const MainPage = () => {
-  const [countries, setCountries] = useState<Countries | any>(null);
+const MainPage = ({ countries, setCountryName }: Countries) => {
   const [queryFilter, setQueryFilter] = useState("");
-  const loadCountries = async () => {
-    const res = await getCountries();
-    setCountries(res.body);
-  };
-  useEffect(() => {
-    if (!countries) {
-      loadCountries();
-    } else {
-    }
-  });
 
   const onChangeQuery = async (event: {
     currentTarget: { value: SetStateAction<string> };
@@ -44,27 +34,25 @@ const MainPage = () => {
   };
 
   return (
-    <Stack>
+    <Stack sx={{ bgcolor: "#FFD", maxWidth: "full-width", minHeight: "100vh" }}>
       <Box
         sx={{
           display: "flex",
-          gap: " 8px",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "space-evenly",
           marginTop: "24px",
         }}
       >
-        <Typography>Main Page</Typography>
-        <TextField
-          placeholder={"Поиск"}
-          onChange={onChangeQuery}
-          className="filter"
-          InputProps={{
-            startAdornment: <SearchIcon />,
-          }}
-        ></TextField>
+        <Typography variant="h4" color="#AAA">
+          World's countries
+        </Typography>
+        <BaseMainListSearch onChangeQuery={onChangeQuery} />
       </Box>
-      <BaseCountryList countries={getFiltered(countries)} />
+      <BaseMainCountryItemList
+        countries={getFiltered(countries)}
+        setCountryName={setCountryName}
+      />
     </Stack>
   );
 };
