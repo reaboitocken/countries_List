@@ -27,32 +27,32 @@ function CountryInfoMap({ countryCapitalGeo }: Props) {
         },
       };
 
-      loadModules(["esri/views/MapView", "esri/WebMap", "esri/Graphic"]).then(
-        ([MapView, WebMap, Graphic]) => {
-          const webmap = new WebMap({
-            basemap: "topo-vector",
-          });
+      loadModules(["esri/views/MapView", "esri/WebMap", "esri/Graphic"], {
+        css: true,
+      }).then(([MapView, WebMap, Graphic]) => {
+        const webmap = new WebMap({
+          basemap: "topo-vector",
+        });
 
-          const point = {
-            type: "point",
-            longitude: countryCapitalGeo[1],
-            latitude: countryCapitalGeo[0],
-          };
-          const pointGraphic = new Graphic({
-            geometry: point,
-            symbol: marker,
-          });
+        const point = {
+          type: "point",
+          longitude: countryCapitalGeo[1],
+          latitude: countryCapitalGeo[0],
+        };
+        const pointGraphic = new Graphic({
+          geometry: point,
+          symbol: marker,
+        });
 
-          view = new MapView({
-            map: webmap,
-            center: countryCapitalGeo?.reverse(),
-            zoom: 13,
-            // use ref as container
-            container: MapEl.current,
-          });
-          view?.graphics.add(pointGraphic);
-        }
-      );
+        view = new MapView({
+          map: webmap,
+          center: countryCapitalGeo?.reverse(),
+          zoom: 13,
+          // use ref as container
+          container: MapEl.current,
+        });
+        view?.graphics.add(pointGraphic);
+      });
       return () => {
         // close the map view
         if (!!view) {
