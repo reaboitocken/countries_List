@@ -29,6 +29,9 @@ const BaseMainCountryItem = ({
     navigate(`${PATH_COUNTRY_INFO}/${name.common}`);
     setCountryName(name.official);
   };
+
+  const items = [name.official, subregion];
+
   return (
     <Stack sx={{ padding: "16px", display: "flex", flexDirection: "row" }}>
       <ListItem
@@ -41,24 +44,20 @@ const BaseMainCountryItem = ({
         }}
       >
         <img style={{ width: "60px" }} src={flags.svg} alt={name.official} />
-        <ListItemText
-          sx={{
-            display: "flex",
-            justifyContent: " center",
-            maxWidth: "180px",
-            margin: "0 24px",
-          }}
-          primary={name.official}
-        />
-        <ListItemText
-          sx={{
-            display: "flex",
-            justifyContent: " center",
-            maxWidth: "180px",
-            margin: "0 24px",
-          }}
-          primary={subregion}
-        />
+        {items?.map((item) => {
+          return (
+            <ListItemText
+              key={item}
+              sx={{
+                display: "flex",
+                justifyContent: " center",
+                maxWidth: "180px",
+                margin: "0 24px",
+              }}
+              primary={item}
+            />
+          );
+        })}
         <ListItemButton
           onClick={goToCountryInfo}
           sx={{

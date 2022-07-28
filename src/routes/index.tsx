@@ -3,8 +3,7 @@ import * as p from "./path";
 import MainPage from "../pages/Main";
 import CountryInfoPage from "../pages/CountryInfo";
 import { useEffect, useState } from "react";
-import { getCountries, getCountryByName } from "../api/services";
-import { Typography } from "@mui/material";
+import { getCountries } from "../api/services";
 
 interface Countries {
   countries: Record<string, Object>[] | undefined;
@@ -22,17 +21,9 @@ const Router = () => {
   useEffect(() => {
     if (!countries) {
       loadCountries();
-      // loadCountry();
     } else {
     }
   });
-
-  // const loadCountry = async () => {
-  //   const res = await getCountryByName("");
-  //   const countryName = res;
-  //   console.log(countryName);
-  // };
-  console.log(countryName);
 
   return useRoutes([
     {

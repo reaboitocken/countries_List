@@ -1,4 +1,4 @@
-export const BASE_URL = "https://restcountries.com";
+export const BASE_URL = process.env.REACT_APP_HTTP_API_BASE_URL;
 
 export const LS_SESS_KEY = "appSession";
 export const LS_SESS_TOKEN_ACCS = "tokenAccess";

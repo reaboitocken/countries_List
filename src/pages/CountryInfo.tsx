@@ -1,10 +1,10 @@
 import { Box, IconButton, ListItem, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { getCountryByName } from "../api/services";
-import BaseCountryInfoElement from "./../components/base/CountryInfo/Element";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { useNavigate } from "react-router";
 import { PATH_MAIN_PAGE } from "./../routes/path";
+import CountryInfoMap from "../components/views/CountryInfo/Map";
 
 interface Props {
   countryName: string;
@@ -38,7 +38,6 @@ const CountryInfoPage = ({ countryName }: Props) => {
       setCountryBody(country[0]);
     }
   }, [country, countryBody]);
-  console.log(country);
 
   const countryFlag: string = countryBody?.flags.svg;
   const countryCode: string = countryBody?.ccn3;
@@ -48,6 +47,8 @@ const CountryInfoPage = ({ countryName }: Props) => {
   const countryArea: number = countryBody?.area;
   const countryPopulation: number = countryBody?.population;
   const countryLanguages: Object = countryBody?.languages;
+  const countryCapital: Object = countryBody?.capital;
+  const countryCapitalGeo: Array<[]> = countryBody?.capitalInfo.latlng;
 
   useEffect(() => {
     if (countryBody) {
@@ -57,18 +58,54 @@ const CountryInfoPage = ({ countryName }: Props) => {
     }
   }, [countryBody, countryLanguages]);
 
+  const items = [
+    {
+      attribute: "code",
+      context: countryCode,
+    },
+    {
+      attribute: "common name",
+      context: countryCommonName,
+    },
+    {
+      attribute: "full name ",
+      context: countryName,
+    },
+    {
+      attribute: "region",
+      context: countryRegion,
+    },
+    {
+      attribute: "subregion",
+      context: countrySubregion,
+    },
+    {
+      attribute: "area",
+      context: countryArea,
+      metric: "km²",
+    },
+    {
+      attribute: "population",
+      context: countryPopulation,
+    },
+    {
+      attribute: "languages",
+      context: countryLang,
+    },
+  ];
+
   return (
     <Stack
       sx={{
         maxWidth: "full-width",
         bgcolor: "#FFD",
         minHeight: "100vh",
+        padding: "20px",
       }}
     >
       <Box
         sx={{
           display: "flex",
-          padding: "20px",
           aligItems: "center",
           justifyContent: "space-between",
         }}
@@ -101,18 +138,18 @@ const CountryInfoPage = ({ countryName }: Props) => {
               padding: "0 40px",
             }}
           >
-            <Typography>{`Country code : ${countryCode} `}</Typography>
-            <Typography>{`Country common name :  ${countryCommonName}`}</Typography>
-            <Typography>{`Country full name :  ${countryName}`}</Typography>
-            <Typography>{`Country region :  ${countryRegion}`}</Typography>
-            <Typography>{`Country subregion :  ${countrySubregion}`}</Typography>
-            <Typography>{`Country area :  ${countryArea} km²`}</Typography>
-            <Typography>{`Country population :  ${countryPopulation}`}</Typography>
-            <Typography>{`Country languages :  ${countryLang}`}</Typography>
+            {items.map((item) => {
+              return (
+                <Typography>{`Country ${item.attribute} : ${item.context}  ${
+                  item.metric ? item.metric : ""
+                }`}</Typography>
+              );
+            })}
           </Stack>
         </Stack>
       </ListItem>
-      <BaseCountryInfoElement />
+      <Typography variant="h4">{`Country capital :  ${countryCapital}`}</Typography>
+      <CountryInfoMap countryCapitalGeo={countryCapitalGeo} />
     </Stack>
   );
 };

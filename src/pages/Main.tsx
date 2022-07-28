@@ -1,6 +1,5 @@
 import { Box, Stack, Typography } from "@mui/material";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { getCountries } from "../api/services";
+import { Dispatch, SetStateAction, useState } from "react";
 import BaseMainCountryItemList from "../components/base/Main/CountryItemList";
 import BaseMainListSearch from "../components/base/Main/ListSearch";
 import { getFilteredArrayOfOjects } from "../utils/filter";

@@ -21,9 +21,8 @@ const BaseMainListSearch = ({ onChangeQuery }: Props) => {
     >
       <TextField
         fullWidth
-        placeholder={"Поиск"}
+        placeholder={"Search country by name"}
         onChange={onChangeQuery}
-        className="filter"
         InputProps={{
           startAdornment: <SearchIcon />,
         }}

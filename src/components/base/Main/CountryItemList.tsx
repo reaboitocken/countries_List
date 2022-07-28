@@ -48,7 +48,12 @@ const BaseMainCountryItemList = ({ countries, setCountryName }: Props) => {
                   flags,
                 };
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={name.official}>
+                  <TableRow
+                    hover
+                    role="checkbox"
+                    tabIndex={-1}
+                    key={name.official}
+                  >
                     <BaseMainCountryItem {...itemProps} />
                   </TableRow>
                 );
