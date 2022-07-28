@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getDeepValue = (obj: Record<string, any> = {}, path: string) => {
   const splittedPath = path.split(".");
 
