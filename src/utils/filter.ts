@@ -8,7 +8,6 @@ export const getDeepValue = (obj: Record<string, any> = {}, path: string) => {
   return obj;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getFilteredArrayOfOjects = (
   arr: Record<string, any>[] = [],
   keys: string[] = [],

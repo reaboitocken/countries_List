@@ -140,7 +140,9 @@ const CountryInfoPage = ({ countryName }: Props) => {
           >
             {items.map((item) => {
               return (
-                <Typography>{`Country ${item.attribute} : ${item.context}  ${
+                <Typography key={item.attribute}>{`Country ${
+                  item.attribute
+                } : ${item.context}  ${
                   item.metric ? item.metric : ""
                 }`}</Typography>
               );
