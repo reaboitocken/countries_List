@@ -12,11 +12,8 @@ const BaseMainListSearch = ({ onChangeQuery }: Props) => {
   return (
     <Box
       sx={{
-        display: "flex",
-        gap: "8px",
-        alignItems: "center",
-        marginTop: "24px",
         width: "100%",
+        marginTop: "24px",
       }}
     >
       <TextField

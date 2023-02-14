@@ -9,7 +9,7 @@ interface Countries {
   setCountryName: Dispatch<SetStateAction<string>>;
 }
 
-const MainPage = ({ countries, setCountryName }: Countries) => {
+const CountriesListPage = ({ countries, setCountryName }: Countries) => {
   const [queryFilter, setQueryFilter] = useState("");
 
   const onChangeQuery = async (event: {
@@ -33,7 +33,14 @@ const MainPage = ({ countries, setCountryName }: Countries) => {
   };
 
   return (
-    <Stack sx={{ bgcolor: "#FFD", maxWidth: "full-width", minHeight: "100vh" }}>
+    <Stack
+      sx={{
+        bgcolor: "#FED",
+        maxWidth: "100vw",
+        height: "96vh",
+        padding: "8px",
+      }}
+    >
       <Box
         sx={{
           display: "flex",
@@ -56,4 +63,4 @@ const MainPage = ({ countries, setCountryName }: Countries) => {
   );
 };
 
-export default MainPage;
+export default CountriesListPage;

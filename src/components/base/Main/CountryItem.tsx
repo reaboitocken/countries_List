@@ -33,7 +33,14 @@ const BaseMainCountryItem = ({
   const items = [name.official, subregion];
 
   return (
-    <Stack sx={{ padding: "16px", display: "flex", flexDirection: "row" }}>
+    <Stack
+      sx={{
+        padding: "12px",
+        display: "flex",
+        flexDirection: "row",
+        maxHeight: "68px",
+      }}
+    >
       <ListItem
         component="div"
         disablePadding
@@ -51,7 +58,7 @@ const BaseMainCountryItem = ({
               sx={{
                 display: "flex",
                 justifyContent: " center",
-                maxWidth: "180px",
+                maxWidth: "380px",
                 margin: "0 24px",
               }}
               primary={item}

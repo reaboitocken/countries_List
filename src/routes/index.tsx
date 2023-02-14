@@ -1,6 +1,6 @@
 import { useRoutes } from "react-router";
 import * as p from "./path";
-import MainPage from "../pages/Main";
+import CountriesListPage from "../pages/CountriesList";
 import CountryInfoPage from "../pages/CountryInfo";
 import { useEffect, useState } from "react";
 import { getCountries } from "../api/services";
@@ -21,7 +21,6 @@ const Router = () => {
   useEffect(() => {
     if (!countries) {
       loadCountries();
-    } else {
     }
   });
 
@@ -29,7 +28,10 @@ const Router = () => {
     {
       path: p.PATH_MAIN_PAGE,
       element: (
-        <MainPage countries={countries} setCountryName={setCountryName} />
+        <CountriesListPage
+          countries={countries}
+          setCountryName={setCountryName}
+        />
       ),
     },
     {

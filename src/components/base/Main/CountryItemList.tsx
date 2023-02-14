@@ -32,7 +32,15 @@ const BaseMainCountryItemList = ({ countries, setCountryName }: Props) => {
   };
   return (
     <>
-      <TableContainer sx={{ maxHeight: "95vh", maxWidth: "95vw" }}>
+      <TableContainer
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          alignSelf: "center",
+          height: "740px",
+          overflow: "hidden",
+        }}
+      >
         <Table stickyHeader aria-label="sticky table">
           <TableBody>
             {countries
@@ -64,7 +72,7 @@ const BaseMainCountryItemList = ({ countries, setCountryName }: Props) => {
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
-        sx={{ alignSelf: "center" }}
+        sx={{ alignSelf: "center", overflow: "hidden" }}
         count={250}
         rowsPerPage={rowsPerPage}
         page={page}

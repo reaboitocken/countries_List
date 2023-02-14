@@ -97,9 +97,9 @@ const CountryInfoPage = ({ countryName }: Props) => {
   return (
     <Stack
       sx={{
+        bgcolor: "#FED",
         maxWidth: "full-width",
-        bgcolor: "#FFD",
-        minHeight: "100vh",
+        height: "94vh",
         padding: "20px",
       }}
     >
